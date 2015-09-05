@@ -1,0 +1,30 @@
+# sbt specific
+.cache
+*.class
+.history
+.lib/
+dist/*
+target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+
+.scala_dependencies
+.worksheet
+
+#idea related
+.idea_modules/
+*.log
+*.iml
+*.ipr
+*.iws
+.idea/
+
+#osx related
+.DS_Store
+
+#vim related
+tags
+temp/
+tmp/
