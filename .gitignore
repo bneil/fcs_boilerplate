@@ -28,3 +28,6 @@ project/plugins/project/
 tags
 temp/
 tmp/
+
+#ensime related
+.ensime*
