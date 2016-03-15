@@ -10,10 +10,10 @@ version := "0.1.0-SNAPSHOT"
 
 homepage := Some(url("https://neil-concepts.com"))
 
-startYear := Some(2015)
+startYear := Some(2016)
 
 /* scala versions and options */
-scalaVersion := "2.11.7"
+scalaVersion := "2.11.8"
 
 // These options will be used for *all* versions.
 scalacOptions ++= Seq(
@@ -39,6 +39,12 @@ javaOptions in Universal ++= Seq(
   "-J-XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=10 -XX:GCLogFileSize=100M"
 )
 
+enablePlugins(DockerPlugin)
+
+fork := true
+
+mainClass in Compile := Some("com.neilconcepts.Server")
+
 /* dependencies */
 libraryDependencies ++= Seq(
   // -- config
@@ -51,15 +57,11 @@ libraryDependencies ++= Seq(
   // -- Joda --
   , "joda-time" % "joda-time" % "2.7"
   // -- Finch --
-  , "com.github.finagle" %% "finch-core" % "0.8.0"
-  , "com.github.finagle" %% "finch-circe" % "0.8.0"
+  , "com.github.finagle" %% "finch-core" % "0.10.0"
+  , "com.github.finagle" %% "finch-circe" % "0.10.0"
   // -- Shapeless --
-  , "com.chuusai" %% "shapeless" % "2.2.5"
+  , "com.chuusai" %% "shapeless" % "2.3.0"
 )
-
-fork := true
-
-mainClass in Compile := Some("com.neilconcepts.Server")
 
 scalariformSettings
 
@@ -70,3 +72,4 @@ ScalariformKeys.preferences := ScalariformKeys.preferences.value
   .setPreference(IndentPackageBlocks, true)
   .setPreference(IndentSpaces, 2)
   .setPreference(MultilineScaladocCommentsStartOnFirstLine, false)
+

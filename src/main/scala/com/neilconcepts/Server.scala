@@ -1,19 +1,11 @@
 package com.neilconcepts
 
-import com.twitter.finagle.Httpx
+import io.finch._
+import com.twitter.finagle.Http
 import com.twitter.util.Await
-import io.finch.route._
-import io.finch.request._
 
 object Server extends App {
-  val title: RequestReader[String] = paramOption("title").withDefault("")
+  val api: Endpoint[String] = get("hello") { Ok("Hello, World!") }
 
-  println("woot1")
-  val api: Router[String] =
-    get(("hello" | "hi") / string ? title) { (name: String, title: String) =>
-      s"Hello, $title $name!"
-    }
-
-  println("woot2")
-  Await.ready(Httpx.serve(":8080", api.toService))
+  Await.ready(Http.serve(":8080", api.toService))
 }
