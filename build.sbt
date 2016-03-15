@@ -32,12 +32,14 @@ scalacOptions ++= Seq(
 javacOptions ++= Seq("-Xlint:unchecked", "-Xlint:deprecation", "-source", "1.7", "-target", "1.7")
 javaOptions in Universal ++= Seq(
   "-J-server",
-  "-J-Xms3g -Xmx3g",
+  "-J-Xms500m -Xmx1g",
   "-J-XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled",
   "-J-XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=68",
   "-J-XX:+ScavengeBeforeFullGC -XX:+CMSScavengeBeforeRemark",
   "-J-XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=10 -XX:GCLogFileSize=100M"
 )
+
+enablePlugins(JavaAppPackaging)
 
 enablePlugins(DockerPlugin)
 
